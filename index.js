@@ -8,12 +8,14 @@ function ctor(options, fn) {
     fn = options
     options = {}
   }
-  options._index = 0
-  return through2.ctor(options, function (chunk, encoding, callback) {
+
+  var Filter = through2.ctor(options, function (chunk, encoding, callback) {
     if (this.options.wantStrings) chunk = chunk.toString()
-    if (fn(chunk, this.options._index++)) this.push(chunk)
+    if (fn.call(this, chunk, this._index++)) this.push(chunk)
     return callback()
   })
+  Filter.prototype._index = 0
+  return Filter
 }
 
 function make(options, fn) {
