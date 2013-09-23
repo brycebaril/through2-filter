@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tap test/"
+    "test": "node test/"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,8 @@
     "url": "https://github.com/brycebaril/through2-filter/issues"
   },
   "devDependencies": {
-    "tape": "~1.0.4",
-    "tap": "~0.4.3",
-    "stream-spigot": "~2.0.0",
+    "tape": "~1.1.1",
+    "stream-spigot": "~2.1.2",
     "concat-stream": "~1.0.0"
   },
   "dependencies": {

@@ -16,13 +16,13 @@ test("ctor", function (t) {
     t.notOk(records.filter(function (r) { return r.skip }).length, "No remaining skip records")
   }
 
-  spigot([
+  spigot({objectMode: true}, [
     {foo: "bar"},
     {foo: "baz", skip: true},
     {foo: "bif", skip: true},
     {foo: "blah"},
     {foo: "buzz"},
-  ], {objectMode: true})
+  ])
     .pipe(new Filter({objectMode: true}))
     .pipe(concat(combine))
 })
@@ -40,13 +40,13 @@ test("ctor options", function (t) {
     t.notOk(records.filter(function (r) { return r.skip }).length, "No remaining skip records")
   }
 
-  spigot([
+  spigot({objectMode: true}, [
     {foo: "bar"},
     {foo: "baz", skip: true},
     {foo: "bif", skip: true},
     {foo: "blah"},
     {foo: "buzz"},
-  ], {objectMode: true})
+  ])
     .pipe(new Filter())
     .pipe(concat(combine))
 })
@@ -86,13 +86,13 @@ test("simple", function (t) {
     t.notOk(records.filter(function (r) { return r.skip }).length, "No remaining skip records")
   }
 
-  spigot([
+  spigot({objectMode: true}, [
     {foo: "bar"},
     {foo: "baz", skip: true},
     {foo: "bif", skip: true},
     {foo: "blah"},
     {foo: "buzz"},
-  ], {objectMode: true})
+  ])
     .pipe(f)
     .pipe(concat(combine))
 })
@@ -153,13 +153,13 @@ test("simple index", function (t) {
     t.deepEquals(records, [{foo: "bar"},{foo: "baz"}], "Expected content")
   }
 
-  spigot([
+  spigot({objectMode: true}, [
     {foo: "bar"},
     {foo: "baz"},
     {foo: "bif"},
     {foo: "blah"},
     {foo: "buzz"},
-  ], {objectMode: true})
+  ])
     .pipe(f)
     .pipe(concat(combine))
 })
