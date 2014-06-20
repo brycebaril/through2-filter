@@ -21,15 +21,26 @@
   ],
   "author": "Bryce B. Baril",
   "license": "MIT",
+  "jshintConfig": {
+    "asi": true,
+    "globalstrict": true,
+    "validthis": true,
+    "eqnull": true,
+    "node": true,
+    "loopfunc": true,
+    "newcap": false,
+    "eqeqeq": false
+  },
   "bugs": {
     "url": "https://github.com/brycebaril/through2-filter/issues"
   },
   "devDependencies": {
-    "tape": "~2.4.0",
-    "stream-spigot": "~3.0.3",
-    "concat-stream": "~1.4.1"
+    "tape": "~2.13.3",
+    "stream-spigot": "~3.0.4",
+    "concat-stream": "~1.4.6"
   },
   "dependencies": {
-    "through2": "~0.4.1"
+    "through2": "~0.5.1",
+    "xtend": "~3.0.0"
   }
 }

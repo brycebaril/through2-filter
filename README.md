@@ -47,6 +47,29 @@ var skip10 = filter(function (element, index) {
   * No third `array` callback argument. That would require realizing the entire stream, which is generally counter-productive to stream operations.
   * `Array.prototype.filter` doesn't modify the source Array, which is somewhat nonsensical when applied to streams.
 
+API
+---
+
+`require("through2-filter")([options], fn)`
+---
+
+Create a `through2-filter` instance that will call `fn(chunk)`. If `fn(chunk)` returns "true" the chunk will be passed downstream. Otherwise it will be dropped.
+
+`require("through2-filter").ctor([options], fn)`
+---
+
+Create a `through2-filter` Type that can be instantiated via `new Type()` or `Type()` to create reusable spies.
+
+`require("through2-filter").obj([options], fn)`
+---
+
+Create a `through2-filter` that defaults to `objectMode = true`.
+
+`require("through2-filter").objCtor([options], fn)`
+---
+
+Create a `through2-filter` Type that defaults to `objectMode = true`.
+
 Options
 -------
 

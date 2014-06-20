@@ -1,3 +1,5 @@
+"use strict";
+
 var test = require("tape").test
 
 var filter = require("../")
@@ -24,6 +26,29 @@ test("ctor", function (t) {
     {foo: "buzz"},
   ])
     .pipe(new Filter({objectMode: true}))
+    .pipe(concat(combine))
+})
+
+test("objCtor", function (t) {
+  t.plan(2)
+
+  var Filter = filter.objCtor(function (record) {
+    return !record.skip
+  })
+
+  function combine(records) {
+    t.equals(records.length, 3, "Correct number of remaining records")
+    t.notOk(records.filter(function (r) { return r.skip }).length, "No remaining skip records")
+  }
+
+  spigot({objectMode: true}, [
+    {foo: "bar"},
+    {foo: "baz", skip: true},
+    {foo: "bif", skip: true},
+    {foo: "blah"},
+    {foo: "buzz"},
+  ])
+    .pipe(new Filter())
     .pipe(concat(combine))
 })
 
@@ -78,6 +103,29 @@ test("simple", function (t) {
   t.plan(2)
 
   var f = filter({objectMode: true}, function (record) {
+    return !record.skip
+  })
+
+  function combine(records) {
+    t.equals(records.length, 3, "Correct number of remaining records")
+    t.notOk(records.filter(function (r) { return r.skip }).length, "No remaining skip records")
+  }
+
+  spigot({objectMode: true}, [
+    {foo: "bar"},
+    {foo: "baz", skip: true},
+    {foo: "bif", skip: true},
+    {foo: "blah"},
+    {foo: "buzz"},
+  ])
+    .pipe(f)
+    .pipe(concat(combine))
+})
+
+test("simple .obj", function (t) {
+  t.plan(2)
+
+  var f = filter.obj(function (record) {
     return !record.skip
   })
 
