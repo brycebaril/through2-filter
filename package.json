@@ -2,7 +2,9 @@
   "name": "through2-filter",
   "version": "1.4.0",
   "description": "A through2 to create an Array.prototype.filter analog for streams.",
-  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "test"
   },
@@ -35,12 +37,12 @@
     "url": "https://github.com/brycebaril/through2-filter/issues"
   },
   "devDependencies": {
-    "tape": "~2.13.3",
-    "stream-spigot": "~3.0.4",
-    "concat-stream": "~1.4.6"
+    "tape": "^3.4.0",
+    "stream-spigot": "^3.0.5",
+    "concat-stream": "^1.4.7"
   },
   "dependencies": {
-    "through2": "~0.5.1",
-    "xtend": "~3.0.0"
+    "through2": "~0.6.3",
+    "xtend": "~4.0.0"
   }
 }
