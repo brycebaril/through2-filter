@@ -37,12 +37,12 @@
     "url": "https://github.com/brycebaril/through2-filter/issues"
   },
   "devDependencies": {
-    "tape": "^3.4.0",
+    "tape": "^4.0.0",
     "stream-spigot": "^3.0.5",
     "concat-stream": "^1.4.7"
   },
   "dependencies": {
-    "through2": "~0.6.3",
+    "through2": "~2.0.0",
     "xtend": "~4.0.0"
   }
 }
