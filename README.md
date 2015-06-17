@@ -3,9 +3,6 @@ through2-filter
 
 [![NPM](https://nodei.co/npm/through2-filter.png)](https://nodei.co/npm/through2-filter/)
 
-[![david-dm](https://david-dm.org/brycebaril/through2-filter.svg)](https://david-dm.org/brycebaril/through2-filter/)
-[![david-dm](https://david-dm.org/brycebaril/through2-filter/dev-status.svg)](https://david-dm.org/brycebaril/through2-filter#info=devDependencies/)
-
 This is a super thin wrapper around [through2](http://npm.im/through2) that works like `Array.prototype.filter` but for streams.
 
 For when through2 is just too verbose :wink:
