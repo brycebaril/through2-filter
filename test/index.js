@@ -211,3 +211,28 @@ test("simple index", function (t) {
     .pipe(f)
     .pipe(concat(combine))
 })
+
+test("error", function (t) {
+  t.plan(1)
+
+  var f = filter(function (chunk) {
+    throw new Error("Error in filter function")
+  })
+
+  function end () {
+    t.fail("Should not end")
+  }
+
+  var r = spigot([
+    "a",
+    "b",
+    "cdefghijk",
+    "lmnopqrst",
+    "u",
+    "vwxyz",
+  ]).pipe(f)
+    .on("end", end)
+    .on("error", function (err) {
+      t.true(err instanceof Error, "Caught error")
+    })
+})
