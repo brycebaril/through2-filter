@@ -1,15 +1,15 @@
 "use strict";
 
-var test = require("tape").test
+const test = require("tape").test
 
-var filter = require("../")
-var spigot = require("stream-spigot")
-var concat = require("concat-stream")
+const filter = require("../")
+const spigot = require("stream-spigot")
+const concat = require("concat-stream")
 
 test("ctor", function (t) {
   t.plan(2)
 
-  var Filter = filter.ctor(function (record) {
+  const Filter = filter.ctor(function (record) {
     return !record.skip
   })
 
@@ -32,7 +32,7 @@ test("ctor", function (t) {
 test("objCtor", function (t) {
   t.plan(2)
 
-  var Filter = filter.objCtor(function (record) {
+  const Filter = filter.objCtor(function (record) {
     return !record.skip
   })
 
@@ -55,7 +55,7 @@ test("objCtor", function (t) {
 test("ctor options", function (t) {
   t.plan(7)
 
-  var Filter = filter.ctor({objectMode: true, foo: "bar"}, function (record) {
+  const Filter = filter.ctor({objectMode: true, foo: "bar"}, function (record) {
     t.equals(this.options.foo, "bar", "Can see options")
     return !record.skip
   })
@@ -79,8 +79,8 @@ test("ctor options", function (t) {
 test("ctor buffer wantStrings", function (t) {
   t.plan(1)
 
-  var re = new RegExp("skip")
-  var Filter = filter.ctor({wantStrings: true}, function (chunk) {
+  const re = new RegExp("skip")
+  const Filter = filter.ctor({wantStrings: true}, function (chunk) {
     return chunk.length <= 5
   })
 
@@ -102,7 +102,7 @@ test("ctor buffer wantStrings", function (t) {
 test("simple", function (t) {
   t.plan(2)
 
-  var f = filter({objectMode: true}, function (record) {
+  const f = filter({objectMode: true}, function (record) {
     return !record.skip
   })
 
@@ -125,7 +125,7 @@ test("simple", function (t) {
 test("simple .obj", function (t) {
   t.plan(2)
 
-  var f = filter.obj(function (record) {
+  const f = filter.obj(function (record) {
     return !record.skip
   })
 
@@ -148,7 +148,7 @@ test("simple .obj", function (t) {
 test("simple buffer", function (t) {
   t.plan(1)
 
-  var f = filter({objectMode: true}, function (chunk) {
+  const f = filter({objectMode: true}, function (chunk) {
     return chunk.length <= 5
   })
 
@@ -170,8 +170,8 @@ test("simple buffer", function (t) {
 test("simple buffer wantStrings", function (t) {
   t.plan(1)
 
-  var re = new RegExp("skip")
-  var f = filter({wantStrings: true}, function (chunk) {
+  const re = new RegExp("skip")
+  const f = filter({wantStrings: true}, function (chunk) {
     return chunk.length <= 5
   })
 
@@ -193,7 +193,7 @@ test("simple buffer wantStrings", function (t) {
 test("simple index", function (t) {
   t.plan(1)
 
-  var f = filter({objectMode: true}, function (record, index) {
+  const f = filter({objectMode: true}, function (record, index) {
     return index < 2
   })
 
@@ -215,7 +215,7 @@ test("simple index", function (t) {
 test("error", function (t) {
   t.plan(1)
 
-  var f = filter(function (chunk) {
+  const f = filter(function (chunk) {
     throw new Error("Error in filter function")
   })
 
@@ -223,7 +223,7 @@ test("error", function (t) {
     t.fail("Should not end")
   }
 
-  var r = spigot([
+  const r = spigot([
     "a",
     "b",
     "cdefghijk",
